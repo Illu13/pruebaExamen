@@ -91,7 +91,7 @@ public class Materia {
 	}
 
 
-	public java.sql.Date getFechaInicio() {
+	public Date getFechaInicio() {
 		return fechaInicio;
 	}
 

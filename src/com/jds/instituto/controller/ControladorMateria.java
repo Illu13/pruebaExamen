@@ -6,11 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.jds.instituto.model.Materia;
 import com.jds.instituto.model.Nivel;
 import com.jds.instituto.utils.ConnectionManager;
+import com.jds.instituto.utils.Utils;
 
 public class ControladorMateria {
 
@@ -32,6 +34,8 @@ public class ControladorMateria {
 			m.setUrlClassroom(rs.getString(5));
 			m.setAdmiteMatricula(rs.getBoolean(6));
 			m.setFechaInicio(rs.getDate(7));
+			
+			
 			materia.add(m);
 		}
 
@@ -54,7 +58,8 @@ public class ControladorMateria {
 		ps.setInt(2, m.getIdNivel());
 		ps.setString(3, m.getCodigo());
 		ps.setString(4, m.getUrlClassroom());
-		ps.setDate(5, m.getFechaInicio());
+		java.sql.Date fechaSql = new java.sql.Date(m.getFechaInicio().getTime());
+		ps.setDate(5, fechaSql);
 
 		int filasAlteradas = ps.executeUpdate();
 
