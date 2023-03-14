@@ -132,5 +132,24 @@ public class Utils {
 		
 		
 	}
+	
+	public static Date parseoFechaEspañol(String fechaSinParseo) {
+
+		SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+
+		String fecha = fechaSinParseo;
+
+		Date fechaParseada = null;
+
+		try {
+			fechaParseada = formatoFecha.parse(fecha);
+		} catch (ParseException e) {
+			System.out.println("Error en el parseo de la fecha");
+			e.printStackTrace();
+		}
+
+		return fechaParseada;
+
+	}
 
 }
